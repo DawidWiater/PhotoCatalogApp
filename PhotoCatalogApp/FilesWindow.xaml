@@ -1,12 +1,23 @@
 ﻿<Window x:Class="PhotoCatalogApp.FilesWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Files" Height="450" Width="800"
+        Title="Files" Height="540" Width="960"
         WindowState="Maximized">
     <Grid>
-        <ScrollViewer>
-            <UniformGrid x:Name="FilesGrid" Columns="3"/>
-        </ScrollViewer>
-        <Button Content="Strona główna" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="HomeButton_Click"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <UniformGrid x:Name="PhotoItemsControl" Columns="5" Grid.Row="0" />
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1">
+            <Button Content="Strona główna" Width="100" Height="30" Margin="10" Click="HomeButton_Click"/>
+            <ComboBox x:Name="SortByComboBox" SelectionChanged="SortBy_SelectionChanged" Margin="10">
+                <ComboBoxItem Content="Data dodania" />
+                <ComboBoxItem Content="Szerokość" />
+                <ComboBoxItem Content="Wysokość" />
+                <ComboBoxItem Content="Waga" />
+                <ComboBoxItem Content="Szacowany Rok" />
+            </ComboBox>
+        </StackPanel>
     </Grid>
 </Window>

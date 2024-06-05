@@ -11,9 +11,9 @@ namespace PhotoCatalogApp
         {
             InitializeComponent();
             PhotoImage.Source = new BitmapImage(new Uri(photoItem.FilePath));
-            WidthText.Text = photoItem.Width.ToString();
-            HeightText.Text = photoItem.Height.ToString();
-            WeightText.Text = photoItem.Weight.ToString();
+            WidthText.Text = $"{photoItem.Width} cm";
+            HeightText.Text = $"{photoItem.Height} cm";
+            WeightText.Text = $"{photoItem.Weight} kg";
             EstimatedYearText.Text = photoItem.EstimatedYear.ToString();
             DescriptionText.Text = photoItem.Description;
         }

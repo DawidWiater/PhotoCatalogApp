@@ -28,25 +28,25 @@ namespace PhotoCatalogApp
             double width, height, weight;
             int estimatedYear;
 
-            if (!double.TryParse(WidthTextBox.Text, out width))
+            if (!double.TryParse(WidthTextBox.Text, out width) || WidthTextBox.Text == "Szerokość (cm)")
             {
                 MessageBox.Show("Proszę wprowadzić prawidłową szerokość.");
                 return;
             }
 
-            if (!double.TryParse(HeightTextBox.Text, out height))
+            if (!double.TryParse(HeightTextBox.Text, out height) || HeightTextBox.Text == "Wysokość (cm)")
             {
                 MessageBox.Show("Proszę wprowadzić prawidłową wysokość.");
                 return;
             }
 
-            if (!double.TryParse(WeightTextBox.Text, out weight))
+            if (!double.TryParse(WeightTextBox.Text, out weight) || WeightTextBox.Text == "Waga (kg)")
             {
                 MessageBox.Show("Proszę wprowadzić prawidłową wagę.");
                 return;
             }
 
-            if (!int.TryParse(EstimatedYearTextBox.Text, out estimatedYear))
+            if (!int.TryParse(EstimatedYearTextBox.Text, out estimatedYear) || EstimatedYearTextBox.Text == "Szacowany Rok")
             {
                 MessageBox.Show("Proszę wprowadzić prawidłowy szacowany rok.");
                 return;
@@ -59,7 +59,7 @@ namespace PhotoCatalogApp
                 Height = height,
                 Weight = weight,
                 EstimatedYear = estimatedYear,
-                Description = DescriptionTextBox.Text
+                Description = DescriptionTextBox.Text == "Opis" ? "" : DescriptionTextBox.Text
             };
 
             _dbContext.AddPhotoItem(photoItem);
@@ -70,23 +70,23 @@ namespace PhotoCatalogApp
             this.Close();
         }
 
-        private void RemoveText(object sender, EventArgs e)
+        private void RemoveText(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if (textBox.Text == "Szerokość" || textBox.Text == "Wysokość" || textBox.Text == "Waga" || textBox.Text == "Szacowany Rok" || textBox.Text == "Opis")
+            if (textBox.Text == "Szerokość (cm)" || textBox.Text == "Wysokość (cm)" || textBox.Text == "Waga (kg)" || textBox.Text == "Szacowany Rok" || textBox.Text == "Opis")
             {
                 textBox.Text = "";
             }
         }
 
-        private void AddText(object sender, EventArgs e)
+        private void AddText(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
             if (string.IsNullOrWhiteSpace(textBox.Text))
             {
-                if (textBox.Name == "WidthTextBox") textBox.Text = "Szerokość";
-                if (textBox.Name == "HeightTextBox") textBox.Text = "Wysokość";
-                if (textBox.Name == "WeightTextBox") textBox.Text = "Waga";
+                if (textBox.Name == "WidthTextBox") textBox.Text = "Szerokość (cm)";
+                if (textBox.Name == "HeightTextBox") textBox.Text = "Wysokość (cm)";
+                if (textBox.Name == "WeightTextBox") textBox.Text = "Waga (kg)";
                 if (textBox.Name == "EstimatedYearTextBox") textBox.Text = "Szacowany Rok";
                 if (textBox.Name == "DescriptionTextBox") textBox.Text = "Opis";
             }
