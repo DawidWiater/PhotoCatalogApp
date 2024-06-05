@@ -11,21 +11,25 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
             <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                <TextBox Width="300" Height="30" Margin="0,10"/>
-                <Button Content="Wyślij" Width="100" Height="30" Margin="0,10"/>
+                <TextBox x:Name="FilePathTextBox" Width="300" Height="30" Margin="0,10"/>
+                <Button Content="Wyślij" Width="100" Height="30" Margin="0,10" Click="UploadButton_Click"/>
             </StackPanel>
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
-                <Button Content="Wszystkie Pliki" Width="100" Height="30" Margin="10"/>
-                <Button Content="Ostatnio dodane" Width="100" Height="30" Margin="10"/>
+                <Button Content="Wszystkie Pliki" Width="100" Height="30" Margin="10" Click="ShowAllFilesButton_Click"/>
+                <Button Content="Ostatnio dodane" Width="100" Height="30" Margin="10" Click="ShowRecentlyAddedButton_Click"/>
             </StackPanel>
+
+            <ListBox x:Name="PhotoListBox" Grid.Row="3" HorizontalAlignment="Center" Width="400" Height="200"/>
+
         </Grid>
-        <Button Content="Wyjście" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10"/>
+        <Button Content="Wyjście" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="ExitButton_Click"/>
     </Grid>
 </Window>

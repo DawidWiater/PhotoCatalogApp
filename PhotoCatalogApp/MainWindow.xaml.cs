@@ -1,6 +1,8 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using PhotoCatalogApp.Data;
 using PhotoCatalogApp.Models;
+using System.Linq;
 
 namespace PhotoCatalogApp
 {
@@ -18,24 +20,40 @@ namespace PhotoCatalogApp
 
         private void LoadPhotoItems()
         {
-            var photoItems = _dbContext.GetAllPhotoItems();
-            // Update UI to display photo items (e.g., populate a ListView or ListBox)
+            var photoItems = _dbContext.GetAllPhotoItems().ToList();
+            PhotoListBox.ItemsSource = photoItems;
         }
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
             var photoItem = new PhotoItem
             {
-                FilePath = "path/to/photo.jpg", // Update with actual file path
-                Width = 100.0, // Update with actual width
-                Height = 200.0, // Update with actual height
-                Weight = 300.0, // Update with actual weight
-                EstimatedYear = 2023, // Update with actual estimated year
-                Description = "Description of the photo" // Update with actual description
+                FilePath = FilePathTextBox.Text,
+                Width = 100.0, // Zaktualizuj rzeczywistymi danymi
+                Height = 200.0, // Zaktualizuj rzeczywistymi danymi
+                Weight = 300.0, // Zaktualizuj rzeczywistymi danymi
+                EstimatedYear = 2023, // Zaktualizuj rzeczywistymi danymi
+                Description = "Opis zdjęcia" // Zaktualizuj rzeczywistymi danymi
             };
 
             _dbContext.AddPhotoItem(photoItem);
             LoadPhotoItems();
+        }
+
+        private void ShowAllFilesButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadPhotoItems();
+        }
+
+        private void ShowRecentlyAddedButton_Click(object sender, RoutedEventArgs e)
+        {
+            var photoItems = _dbContext.GetAllPhotoItems().OrderByDescending(p => p.Id).Take(10).ToList();
+            PhotoListBox.ItemsSource = photoItems;
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
