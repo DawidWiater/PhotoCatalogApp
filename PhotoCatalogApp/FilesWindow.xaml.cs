@@ -19,24 +19,23 @@ namespace PhotoCatalogApp
                     Source = new BitmapImage(new Uri(item.FilePath)),
                     Width = 200,
                     Height = 200,
-                    Margin = new Thickness(10)
+                    Margin = new Thickness(10),
+                    Tag = item
                 };
 
-                var toolTip = new ToolTip();
-                var stackPanel = new StackPanel();
-                stackPanel.Children.Add(new TextBlock { Text = "Wymiary:", FontWeight = FontWeights.Bold });
-                stackPanel.Children.Add(new TextBlock { Text = $"Szerokość: {item.Width}" });
-                stackPanel.Children.Add(new TextBlock { Text = $"Wysokość: {item.Height}" });
-                stackPanel.Children.Add(new TextBlock { Text = $"Waga: {item.Weight}" });
-                stackPanel.Children.Add(new TextBlock { Text = $"Szacowany rok: {item.EstimatedYear}" });
-                stackPanel.Children.Add(new TextBlock { Text = "Opis:", FontWeight = FontWeights.Bold });
-                stackPanel.Children.Add(new TextBlock { Text = item.Description });
-
-                toolTip.Content = stackPanel;
-                image.ToolTip = toolTip;
+                image.MouseLeftButtonUp += Image_MouseLeftButtonUp;
 
                 FilesGrid.Children.Add(image);
             }
+        }
+
+        private void Image_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var image = sender as Image;
+            var photoItem = image.Tag as PhotoItem;
+
+            var photoDetailsWindow = new PhotoDetailsWindow(photoItem);
+            photoDetailsWindow.ShowDialog();
         }
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)

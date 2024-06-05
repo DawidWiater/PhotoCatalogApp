@@ -80,6 +80,9 @@
     <Compile Include="FilesWindow.xaml.cs">
       <DependentUpon>FilesWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PhotoDetailsWindow.xaml.cs">
+      <DependentUpon>PhotoDetailsWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UploadWindow.xaml.cs">
       <DependentUpon>UploadWindow.xaml</DependentUpon>
     </Compile>
@@ -100,6 +103,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PhotoDetailsWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UploadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
