@@ -1,0 +1,12 @@
+﻿<Window x:Class="PhotoCatalogApp.FilesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Files" Height="450" Width="800"
+        WindowState="Maximized">
+    <Grid>
+        <ScrollViewer>
+            <UniformGrid x:Name="FilesGrid" Columns="3"/>
+        </ScrollViewer>
+        <Button Content="Strona główna" Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10" Click="HomeButton_Click"/>
+    </Grid>
+</Window>

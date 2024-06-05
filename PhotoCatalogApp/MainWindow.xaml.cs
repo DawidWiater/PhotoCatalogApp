@@ -1,11 +1,10 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.IO;
+using System.Linq;
 using System.Windows;
-using System.Windows.Media.Imaging;
 using PhotoCatalogApp.Data;
 using PhotoCatalogApp.Models;
-using System.Linq;
 
 namespace PhotoCatalogApp
 {
@@ -51,15 +50,17 @@ namespace PhotoCatalogApp
         private void ShowAllFilesButton_Click(object sender, RoutedEventArgs e)
         {
             var photoItems = _dbContext.GetAllPhotoItems().ToList();
-            // Logika wyświetlania wszystkich plików, np. otwarcie nowego okna z listą plików
-            MessageBox.Show($"Wszystkie pliki: {photoItems.Count}");
+            var filesWindow = new FilesWindow(photoItems);
+            filesWindow.Show();
+            this.Close();
         }
 
         private void ShowRecentlyAddedButton_Click(object sender, RoutedEventArgs e)
         {
-            var photoItems = _dbContext.GetAllPhotoItems().OrderByDescending(p => p.Id).Take(10).ToList();
-            // Logika wyświetlania ostatnio dodanych plików, np. otwarcie nowego okna z listą plików
-            MessageBox.Show($"Ostatnio dodane pliki: {photoItems.Count}");
+            var photoItems = _dbContext.GetAllPhotoItems().OrderByDescending(p => p.Id).Take(3).ToList();
+            var filesWindow = new FilesWindow(photoItems);
+            filesWindow.Show();
+            this.Close();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
