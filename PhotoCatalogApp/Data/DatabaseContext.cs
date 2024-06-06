@@ -29,7 +29,8 @@ namespace PhotoCatalogApp.Data
                         Depth REAL,
                         Weight REAL,
                         EstimatedYear INTEGER,
-                        Description TEXT
+                        Description TEXT,
+                        Material TEXT
                     )");
             }
         }
@@ -47,8 +48,17 @@ namespace PhotoCatalogApp.Data
             using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Execute(@"
-                    INSERT INTO PhotoItems (FilePath, Width, Height, Depth, Weight, EstimatedYear, Description) 
-                    VALUES (@FilePath, @Width, @Height, @Depth, @Weight, @EstimatedYear, @Description)", photoItem);
+                    INSERT INTO PhotoItems (FilePath, Width, Height, Depth, Weight, EstimatedYear, Description, Material) 
+                    VALUES (@FilePath, @Width, @Height, @Depth, @Weight, @EstimatedYear, @Description, @Material)", photoItem);
+            }
+        }
+
+        public void ResetDatabase()
+        {
+            using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
+            {
+                connection.Execute("DROP TABLE IF EXISTS PhotoItems");
+                InitializeDatabase();
             }
         }
 

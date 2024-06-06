@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using PhotoCatalogApp.Data;
 using PhotoCatalogApp.Models;
+using System.Windows.Controls;
 
 namespace PhotoCatalogApp
 {
@@ -41,7 +42,6 @@ namespace PhotoCatalogApp
                 return;
             }
 
-            // Przenieś do nowego okna
             var uploadWindow = new UploadWindow(_selectedFilePath);
             uploadWindow.Show();
             this.Close();
@@ -66,6 +66,46 @@ namespace PhotoCatalogApp
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void ShowResetConfirmation(object sender, RoutedEventArgs e)
+        {
+            ConfirmResetTextBox.Visibility = Visibility.Visible;
+            ConfirmResetButton.Visibility = Visibility.Visible;
+            ConfirmTextBlock.Visibility = Visibility.Visible;
+        }
+
+        private void ResetDatabaseButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (ConfirmResetTextBox.Text == "tak-chce-zresetowac-wszytskie-dane")
+            {
+                _dbContext.ResetDatabase();
+                MessageBox.Show("Baza danych została zresetowana.");
+                ConfirmResetTextBox.Visibility = Visibility.Collapsed;
+                ConfirmResetButton.Visibility = Visibility.Collapsed;
+                ConfirmTextBlock.Visibility = Visibility.Collapsed;
+                ConfirmResetTextBox.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Aby zresetować bazę danych, wpisz poprawny tekst w polu potwierdzenia.");
+            }
+        }
+
+        private void ShowText(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                ConfirmTextBlock.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }

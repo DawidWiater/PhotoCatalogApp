@@ -11,15 +11,15 @@
         <UniformGrid x:Name="PhotoItemsControl" Columns="5" Grid.Row="0" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1">
             <Button Content="Strona główna" Width="100" Height="30" Margin="10" Click="HomeButton_Click"/>
-            <!-- Zakomentowane ComboBox
             <ComboBox x:Name="SortByComboBox" SelectionChanged="SortBy_SelectionChanged" Margin="10">
                 <ComboBoxItem Content="Data dodania" />
                 <ComboBoxItem Content="Szerokość" />
                 <ComboBoxItem Content="Wysokość" />
                 <ComboBoxItem Content="Waga" />
                 <ComboBoxItem Content="Szacowany Rok" />
+                <ComboBoxItem Content="Nazwa" />
+                <ComboBoxItem Content="Materiał" />
             </ComboBox>
-            -->
         </StackPanel>
     </Grid>
 </Window>

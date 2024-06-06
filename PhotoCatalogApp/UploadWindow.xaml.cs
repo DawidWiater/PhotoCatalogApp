@@ -68,7 +68,7 @@ namespace PhotoCatalogApp
                 Weight = weight,
                 EstimatedYear = estimatedYear,
                 Description = Field16.Text,
-                // Dodaj pozostałe pola zgodnie z nowym układem
+                Material = Field8.Text // Dodanie materiału
             };
 
             _dbContext.AddPhotoItem(photoItem);

@@ -10,5 +10,6 @@
         public double Weight { get; set; }
         public int EstimatedYear { get; set; }
         public string Description { get; set; }
+        public string Material { get; set; } // Nowa właściwość
     }
 }

@@ -47,7 +47,6 @@ namespace PhotoCatalogApp
             detailsWindow.Show();
         }
 
-        /* Zakomentowane sortowanie
         private void SortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SortByComboBox.SelectedItem != null)
@@ -72,12 +71,17 @@ namespace PhotoCatalogApp
                     case "Szacowany Rok":
                         sortedItems = _photoItems.OrderBy(p => p.EstimatedYear);
                         break;
+                    case "Nazwa":
+                        sortedItems = _photoItems.OrderBy(p => p.FilePath); // Sortowanie po nazwie pliku
+                        break;
+                    case "Materiał":
+                        sortedItems = _photoItems.OrderBy(p => p.Material); // Sortowanie po materiale
+                        break;
                 }
 
                 LoadPhotoItems(sortedItems.ToList());
             }
         }
-        */
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {
