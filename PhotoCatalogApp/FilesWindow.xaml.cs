@@ -47,6 +47,7 @@ namespace PhotoCatalogApp
             detailsWindow.Show();
         }
 
+        /* Zakomentowane sortowanie
         private void SortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (SortByComboBox.SelectedItem != null)
@@ -76,6 +77,7 @@ namespace PhotoCatalogApp
                 LoadPhotoItems(sortedItems.ToList());
             }
         }
+        */
 
         private void HomeButton_Click(object sender, RoutedEventArgs e)
         {

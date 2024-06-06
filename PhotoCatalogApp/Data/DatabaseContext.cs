@@ -1,6 +1,8 @@
-﻿using System.Data.SQLite;
-using Dapper;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Linq;
+using Dapper;
 using PhotoCatalogApp.Models;
 
 namespace PhotoCatalogApp.Data
@@ -24,6 +26,7 @@ namespace PhotoCatalogApp.Data
                         FilePath TEXT,
                         Width REAL,
                         Height REAL,
+                        Depth REAL,
                         Weight REAL,
                         EstimatedYear INTEGER,
                         Description TEXT
@@ -44,11 +47,11 @@ namespace PhotoCatalogApp.Data
             using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Execute(@"
-                    INSERT INTO PhotoItems (FilePath, Width, Height, Weight, EstimatedYear, Description) 
-                    VALUES (@FilePath, @Width, @Height, @Weight, @EstimatedYear, @Description)", photoItem);
+                    INSERT INTO PhotoItems (FilePath, Width, Height, Depth, Weight, EstimatedYear, Description) 
+                    VALUES (@FilePath, @Width, @Height, @Depth, @Weight, @EstimatedYear, @Description)", photoItem);
             }
         }
 
-        // Additional methods for update and delete operations can be added here
+        // Dodatkowe metody do aktualizacji i usuwania danych mogą być dodane tutaj
     }
 }
