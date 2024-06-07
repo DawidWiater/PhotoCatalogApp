@@ -20,14 +20,13 @@ namespace PhotoCatalogApp
 
         private void LoadPhotoItems(List<PhotoItem> photoItems)
         {
-            PhotoItemsListBox.ItemsSource = photoItems;
-            PhotoItemsListBox.DisplayMemberPath = "Name"; // Display the name instead of the file path
-            PhotoItemsListBox.SelectionChanged += PhotoItemsListBox_SelectionChanged;
+            PhotoItemsListView.ItemsSource = photoItems;
+            PhotoItemsListView.SelectionChanged += PhotoItemsListView_SelectionChanged;
         }
 
-        private void PhotoItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void PhotoItemsListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (PhotoItemsListBox.SelectedItem is PhotoItem selectedPhotoItem)
+            if (PhotoItemsListView.SelectedItem is PhotoItem selectedPhotoItem)
             {
                 var detailsWindow = new PhotoDetailsWindow(selectedPhotoItem);
                 detailsWindow.Show();
@@ -59,10 +58,10 @@ namespace PhotoCatalogApp
                         sortedItems = _photoItems.OrderBy(p => p.EstimatedYear);
                         break;
                     case "Nazwa":
-                        sortedItems = _photoItems.OrderBy(p => p.Name); // Sortowanie po nazwie
+                        sortedItems = _photoItems.OrderBy(p => p.Name);
                         break;
                     case "Materiał":
-                        sortedItems = _photoItems.OrderBy(p => p.Material); // Sortowanie po materiale
+                        sortedItems = _photoItems.OrderBy(p => p.Material);
                         break;
                 }
 

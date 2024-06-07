@@ -11,12 +11,18 @@
             <TextBlock x:Name="WidthText"/>
             <TextBlock Text="Wysokość:" FontWeight="Bold"/>
             <TextBlock x:Name="HeightText"/>
+            <TextBlock Text="Głębokość:" FontWeight="Bold"/>
+            <TextBlock x:Name="DepthText"/>
             <TextBlock Text="Waga:" FontWeight="Bold"/>
             <TextBlock x:Name="WeightText"/>
             <TextBlock Text="Szacowany Rok:" FontWeight="Bold"/>
             <TextBlock x:Name="EstimatedYearText"/>
-            <TextBlock Text="Opis:" FontWeight="Bold"/>
+            <TextBlock Text="Materiał:" FontWeight="Bold"/>
+            <TextBlock x:Name="MaterialText"/>
+            <TextBlock Text="Uwagi:" FontWeight="Bold"/>
+            <!-- Zmieniamy etykietę -->
             <TextBlock x:Name="DescriptionText"/>
+            <!-- Opis zmieniony na Uwagi -->
             <Button Content="Zamknij" Width="100" Margin="10" Click="CloseButton_Click"/>
         </StackPanel>
     </Grid>

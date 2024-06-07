@@ -8,7 +8,20 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <ListBox x:Name="PhotoItemsListBox" Grid.Row="0" Margin="10" />
+        <ListView x:Name="PhotoItemsListView" Grid.Row="0" Margin="10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" Width="120"/>
+                    <GridViewColumn Header="Ścieżka Pliku" DisplayMemberBinding="{Binding FilePath}" Width="250"/>
+                    <GridViewColumn Header="Szerokość" DisplayMemberBinding="{Binding Width}" Width="80"/>
+                    <GridViewColumn Header="Wysokość" DisplayMemberBinding="{Binding Height}" Width="80"/>
+                    <GridViewColumn Header="Głębokość" DisplayMemberBinding="{Binding Depth}" Width="80"/>
+                    <GridViewColumn Header="Waga" DisplayMemberBinding="{Binding Weight}" Width="80"/>
+                    <GridViewColumn Header="Szacowany Rok" DisplayMemberBinding="{Binding EstimatedYear}" Width="100"/>
+                    <GridViewColumn Header="Materiał" DisplayMemberBinding="{Binding Material}" Width="100"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1">
             <Button Content="Strona główna" Width="100" Height="30" Margin="10" Click="HomeButton_Click"/>
             <ComboBox x:Name="SortByComboBox" SelectionChanged="SortBy_SelectionChanged" Margin="10">
