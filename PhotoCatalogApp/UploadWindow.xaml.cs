@@ -61,6 +61,7 @@ namespace PhotoCatalogApp
 
             var photoItem = new PhotoItem
             {
+                Name = Field1.Text, // Zapisujemy nazwę pliku
                 FilePath = _filePath,
                 Width = width,
                 Height = height,
@@ -91,47 +92,30 @@ namespace PhotoCatalogApp
             this.Close();
         }
 
-        private void RemoveText(object sender, RoutedEventArgs e)
+        private void FillRandomButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox.Text == "1. Nazwa" || textBox.Text == "2. Nr ewidencyjny" || textBox.Text == "3. Autor/wytwórca" ||
-                textBox.Text == "4. Pochodzenie" || textBox.Text == "5. Wartość w dniu nabycia (szacowana)" || textBox.Text == "6. Czas powstania" ||
-                textBox.Text == "7. Miejsce powstania" || textBox.Text == "8. Materiał" || textBox.Text == "9. Technika wykonania" ||
-                textBox.Text == "10. Waga" || textBox.Text == "11. Wymiary (wysokość)" || textBox.Text == "11. Wymiary (szerokość)" ||
-                textBox.Text == "11. Wymiary (głębokość)" || textBox.Text == "12. Cechy szczególne" || textBox.Text == "13. Dane przekazującego" ||
-                textBox.Text == "14. Miejsce znalezienia" || textBox.Text == "15. Data wpisu" || textBox.Text == "16. Uwagi" ||
-                textBox.Text == "17. Stan zachowania" || textBox.Text == "18. Zabiegi konserwacyjne")
-            {
-                textBox.Text = "";
-            }
-        }
+            Random rand = new Random();
 
-        private void AddText(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                if (textBox.Name == "Field1") textBox.Text = "1. Nazwa";
-                if (textBox.Name == "Field2") textBox.Text = "2. Nr ewidencyjny";
-                if (textBox.Name == "Field3") textBox.Text = "3. Autor/wytwórca";
-                if (textBox.Name == "Field4") textBox.Text = "4. Pochodzenie";
-                if (textBox.Name == "Field5") textBox.Text = "5. Wartość w dniu nabycia (szacowana)";
-                if (textBox.Name == "Field6") textBox.Text = "6. Czas powstania";
-                if (textBox.Name == "Field7") textBox.Text = "7. Miejsce powstania";
-                if (textBox.Name == "Field8") textBox.Text = "8. Materiał";
-                if (textBox.Name == "Field9") textBox.Text = "9. Technika wykonania";
-                if (textBox.Name == "Field10") textBox.Text = "10. Waga";
-                if (textBox.Name == "Field11a") textBox.Text = "11. Wymiary (wysokość)";
-                if (textBox.Name == "Field11b") textBox.Text = "11. Wymiary (szerokość)";
-                if (textBox.Name == "Field11c") textBox.Text = "11. Wymiary (głębokość)";
-                if (textBox.Name == "Field12") textBox.Text = "12. Cechy szczególne";
-                if (textBox.Name == "Field13") textBox.Text = "13. Dane przekazującego";
-                if (textBox.Name == "Field14") textBox.Text = "14. Miejsce znalezienia";
-                if (textBox.Name == "Field15") textBox.Text = "15. Data wpisu";
-                if (textBox.Name == "Field16") textBox.Text = "16. Uwagi";
-                if (textBox.Name == "Field17") textBox.Text = "17. Stan zachowania";
-                if (textBox.Name == "Field18") textBox.Text = "18. Zabiegi konserwacyjne";
-            }
+            if (string.IsNullOrWhiteSpace(Field1.Text)) Field1.Text = "Random Name " + rand.Next(1, 100);
+            if (string.IsNullOrWhiteSpace(Field2.Text)) Field2.Text = rand.Next(1000, 9999).ToString();
+            if (string.IsNullOrWhiteSpace(Field3.Text)) Field3.Text = "Random Author";
+            if (string.IsNullOrWhiteSpace(Field4.Text)) Field4.Text = "Random Origin";
+            if (string.IsNullOrWhiteSpace(Field5.Text)) Field5.Text = rand.Next(100, 1000).ToString() + " PLN";
+            if (string.IsNullOrWhiteSpace(Field6.Text)) Field6.Text = rand.Next(1900, 2022).ToString();
+            if (string.IsNullOrWhiteSpace(Field7.Text)) Field7.Text = "Random Place";
+            if (string.IsNullOrWhiteSpace(Field8.Text)) Field8.Text = "Random Material";
+            if (string.IsNullOrWhiteSpace(Field9.Text)) Field9.Text = "Random Technique";
+            if (string.IsNullOrWhiteSpace(Field10.Text)) Field10.Text = rand.NextDouble().ToString("F2");
+            if (string.IsNullOrWhiteSpace(Field11a.Text)) Field11a.Text = rand.NextDouble().ToString("F2");
+            if (string.IsNullOrWhiteSpace(Field11b.Text)) Field11b.Text = rand.NextDouble().ToString("F2");
+            if (string.IsNullOrWhiteSpace(Field11c.Text)) Field11c.Text = rand.NextDouble().ToString("F2");
+            if (string.IsNullOrWhiteSpace(Field12.Text)) Field12.Text = "Random Feature";
+            if (string.IsNullOrWhiteSpace(Field13.Text)) Field13.Text = "Random Donor";
+            if (string.IsNullOrWhiteSpace(Field14.Text)) Field14.Text = "Random Location";
+            if (string.IsNullOrWhiteSpace(Field15.Text)) Field15.Text = DateTime.Now.ToShortDateString();
+            if (string.IsNullOrWhiteSpace(Field16.Text)) Field16.Text = "Random Notes";
+            if (string.IsNullOrWhiteSpace(Field17.Text)) Field17.Text = "Random Condition";
+            if (string.IsNullOrWhiteSpace(Field18.Text)) Field18.Text = "Random Conservation";
         }
     }
 }

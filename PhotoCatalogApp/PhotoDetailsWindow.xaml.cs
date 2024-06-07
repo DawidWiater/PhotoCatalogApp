@@ -10,6 +10,7 @@ namespace PhotoCatalogApp
         public PhotoDetailsWindow(PhotoItem photoItem)
         {
             InitializeComponent();
+            NameText.Text = photoItem.Name; // Wyświetlanie nazwy pliku
             PhotoImage.Source = new BitmapImage(new Uri(photoItem.FilePath));
             WidthText.Text = $"{photoItem.Width} cm";
             HeightText.Text = $"{photoItem.Height} cm";

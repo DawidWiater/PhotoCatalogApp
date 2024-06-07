@@ -11,7 +11,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
@@ -26,7 +25,6 @@
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Content="Wszystkie Pliki" Width="100" Height="30" Margin="10" Click="ShowAllFilesButton_Click"/>
-                <Button Content="Ostatnio dodane" Width="100" Height="30" Margin="10" Click="ShowRecentlyAddedButton_Click"/>
             </StackPanel>
 
             <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">

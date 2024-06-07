@@ -97,10 +97,11 @@
                 <!-- Wyświetlanie rozmiaru pliku -->
                 <TextBlock x:Name="FileSizeTextBlock" Margin="0,10"/>
 
-                <!-- Przycisk do zatwierdzania i anulowania -->
+                <!-- Przycisk do zatwierdzania, anulowania i uzupełniania -->
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Zatwierdź" Width="100" Margin="10" Click="SubmitButton_Click"/>
                     <Button Content="Anuluj" Width="100" Margin="10" Click="CancelButton_Click"/>
+                    <Button Content="Uzupełnij automatycznie" Width="150" Margin="10" Click="FillRandomButton_Click"/>
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

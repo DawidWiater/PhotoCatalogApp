@@ -23,6 +23,7 @@ namespace PhotoCatalogApp.Data
                 connection.Execute(@"
                     CREATE TABLE IF NOT EXISTS PhotoItems (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Name TEXT,
                         FilePath TEXT,
                         Width REAL,
                         Height REAL,
@@ -48,8 +49,8 @@ namespace PhotoCatalogApp.Data
             using (SQLiteConnection connection = new SQLiteConnection(_connectionString))
             {
                 connection.Execute(@"
-                    INSERT INTO PhotoItems (FilePath, Width, Height, Depth, Weight, EstimatedYear, Description, Material) 
-                    VALUES (@FilePath, @Width, @Height, @Depth, @Weight, @EstimatedYear, @Description, @Material)", photoItem);
+                    INSERT INTO PhotoItems (Name, FilePath, Width, Height, Depth, Weight, EstimatedYear, Description, Material) 
+                    VALUES (@Name, @FilePath, @Width, @Height, @Depth, @Weight, @EstimatedYear, @Description, @Material)", photoItem);
             }
         }
 
@@ -61,7 +62,5 @@ namespace PhotoCatalogApp.Data
                 InitializeDatabase();
             }
         }
-
-        // Dodatkowe metody do aktualizacji i usuwania danych mogą być dodane tutaj
     }
 }

@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using PhotoCatalogApp.Data;
-using PhotoCatalogApp.Models;
 using System.Windows.Controls;
 
 namespace PhotoCatalogApp
@@ -50,14 +49,6 @@ namespace PhotoCatalogApp
         private void ShowAllFilesButton_Click(object sender, RoutedEventArgs e)
         {
             var photoItems = _dbContext.GetAllPhotoItems().ToList();
-            var filesWindow = new FilesWindow(photoItems);
-            filesWindow.Show();
-            this.Close();
-        }
-
-        private void ShowRecentlyAddedButton_Click(object sender, RoutedEventArgs e)
-        {
-            var photoItems = _dbContext.GetAllPhotoItems().OrderByDescending(p => p.Id).Take(3).ToList();
             var filesWindow = new FilesWindow(photoItems);
             filesWindow.Show();
             this.Close();

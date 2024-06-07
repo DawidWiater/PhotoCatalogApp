@@ -8,7 +8,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <UniformGrid x:Name="PhotoItemsControl" Columns="5" Grid.Row="0" />
+        <ListBox x:Name="PhotoItemsListBox" Grid.Row="0" Margin="10" />
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="1">
             <Button Content="Strona główna" Width="100" Height="30" Margin="10" Click="HomeButton_Click"/>
             <ComboBox x:Name="SortByComboBox" SelectionChanged="SortBy_SelectionChanged" Margin="10">

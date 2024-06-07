@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using PhotoCatalogApp.Models;
 
 namespace PhotoCatalogApp
@@ -21,30 +20,18 @@ namespace PhotoCatalogApp
 
         private void LoadPhotoItems(List<PhotoItem> photoItems)
         {
-            PhotoItemsControl.Children.Clear();
-            foreach (var photoItem in photoItems)
-            {
-                var button = new Button
-                {
-                    Content = new Image
-                    {
-                        Source = new BitmapImage(new Uri(photoItem.FilePath)),
-                        Width = 200,
-                        Height = 200
-                    },
-                    Tag = photoItem,
-                    Margin = new Thickness(5)
-                };
-                button.Click += PhotoItem_Click;
-                PhotoItemsControl.Children.Add(button);
-            }
+            PhotoItemsListBox.ItemsSource = photoItems;
+            PhotoItemsListBox.DisplayMemberPath = "Name"; // Display the name instead of the file path
+            PhotoItemsListBox.SelectionChanged += PhotoItemsListBox_SelectionChanged;
         }
 
-        private void PhotoItem_Click(object sender, RoutedEventArgs e)
+        private void PhotoItemsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var photoItem = ((Button)sender).Tag as PhotoItem;
-            var detailsWindow = new PhotoDetailsWindow(photoItem);
-            detailsWindow.Show();
+            if (PhotoItemsListBox.SelectedItem is PhotoItem selectedPhotoItem)
+            {
+                var detailsWindow = new PhotoDetailsWindow(selectedPhotoItem);
+                detailsWindow.Show();
+            }
         }
 
         private void SortBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -72,7 +59,7 @@ namespace PhotoCatalogApp
                         sortedItems = _photoItems.OrderBy(p => p.EstimatedYear);
                         break;
                     case "Nazwa":
-                        sortedItems = _photoItems.OrderBy(p => p.FilePath); // Sortowanie po nazwie pliku
+                        sortedItems = _photoItems.OrderBy(p => p.Name); // Sortowanie po nazwie
                         break;
                     case "Materiał":
                         sortedItems = _photoItems.OrderBy(p => p.Material); // Sortowanie po materiale

@@ -4,6 +4,8 @@
         Title="Photo Details" Height="740" Width="1360">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Nazwa:" FontWeight="Bold"/>
+            <TextBlock x:Name="NameText"/>
             <Image x:Name="PhotoImage" Width="360" Height="360" Margin="0,10"/>
             <TextBlock Text="Szerokość:" FontWeight="Bold"/>
             <TextBlock x:Name="WidthText"/>
